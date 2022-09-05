@@ -5,44 +5,94 @@ const generateREADME = require('./utils/generateMarkdown');
 
 // Array of questions for user input
 const questions = () => {
+    const seperate = new inquirer.Separator()
     // Use inquirer to prompt questions
     return inquirer.prompt([
         {
             type: 'input',
             name: 'github',
             message: 'What is your GitHub username?',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your GitHub username');
+                    return false;
+                }
+            },
         },
         {
             type: 'input',
             name: 'email',
-            message: 'What is your email adress?',
+            message: 'What is your email address?',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Please enter your email address');
+                    return false;
+                }
+            },
         },
         {
             type: 'input',
             name: 'title',
-            message: 'What is the name of your project?',
+            message: 'What is the title of your project?',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Please enter the title of your project');
+                    return false;
+                }
+            },
         },
         {
             type: 'input',
             name: 'description',
             message: 'Please write a description of your project?',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a description for your project');
+                    return false;
+                }
+            },
         },
         {
             type: 'input',
             name: 'installation',
             message: 'What are the steps required for instaling this project?',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a installation description');
+                    return false;
+                }
+            },
         },
         {
             type: 'input',
             name: 'usage',
             message: 'How do you use this application?',
+            validate: userInput => {
+                if (userInput) {
+                    return true;
+                } else {
+                    console.log('Please enter a usage description');
+                    return false;
+                }
+            },
         },
         {
             type: 'list',
             name: 'license',
             message: 'What license do you want your project to have?',
-            choices: ['Apache License 2.0','Boost Software License 1.0','GNU AGPLv3','GNU GPLv3','GNU LGPLv3','MIT License','Mozilla Public License 2.0','The Unlicense',],
-        }, 
+            choices: ['Apache License 2.0', seperate, 'Boost Software License 1.0', seperate, 'GNU AGPLv3', seperate, 'GNU GPLv3', seperate, 'GNU LGPLv3', seperate, 'MIT License', seperate, 'Mozilla Public License 2.0', seperate, 'The Unlicense', seperate,' '],
+            default: ' ',
+        },
         {
             type: 'input',
             name: 'tests',
